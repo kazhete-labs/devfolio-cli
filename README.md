@@ -1,34 +1,15 @@
 # devfolio-cli
 
-Turn a GitHub username into a **static portfolio site** plus a **README quality scorecard**.
+[![CI](https://github.com/kazhete-labs/devfolio-cli/actions/workflows/ci.yml/badge.svg)](https://github.com/kazhete-labs/devfolio-cli/actions/workflows/ci.yml)
+[![Go](https://img.shields.io/badge/Go-1.22%2B-00ADD8?logo=go&logoColor=white)](go.mod)
+[![License: MIT](https://img.shields.io/badge/License-MIT-blue.svg)](LICENSE)
+[![Rust port](https://img.shields.io/badge/also%20available%20in-Rust-DEA584?logo=rust&logoColor=white)](../devfolio-cli-rust)
 
-Local CLI only — no SaaS. Works with the public GitHub API (optional `GITHUB_TOKEN` for higher rate limits).
-
-## User guide
-
-Full install, flags, scoring rules, and troubleshooting: **[docs/USER_GUIDE.md](docs/USER_GUIDE.md)**.
-
-## Install
-
-```bash
-go install github.com/kazhetelabs/devfolio-cli/cmd/devfolio@latest
-```
-
-Or from this repo:
-
-```bash
-go build -o bin/devfolio ./cmd/devfolio
-```
-
-## 30-second demo
+Turn any GitHub username into a **static portfolio site** and a **README quality scorecard** — one command, no SaaS, no signup.
 
 ```bash
 devfolio generate octocat -o ./devfolio-out
-# open ./devfolio-out/index.html
-# read ./devfolio-out/scorecard.md
 ```
-
-Example terminal output:
 
 ```text
 Generated portfolio for @octocat
@@ -39,11 +20,33 @@ Generated portfolio for @octocat
   scorecard:    ./devfolio-out/scorecard.md
 ```
 
-> Tip: add a short screen recording as `docs/demo.gif` before publishing the repo publicly.
+## Why devfolio-cli
+
+- 🚀 **Zero config** — point it at a GitHub username, get a finished site
+- 📊 **README scorecard** — every repo graded A–F across 9 weighted checks
+- 🖥️ **Static output** — plain HTML/CSS, deploy anywhere (GitHub Pages, Netlify, S3…)
+- 🔑 **Rate-limit friendly** — optional `GITHUB_TOKEN` for heavier use
+- 🐹 **Single binary** — pure Go, no runtime dependencies
+
+## Install
+
+```bash
+go install github.com/kazhetelabs/devfolio-cli/cmd/devfolio@latest
+```
+
+Or build from this repo:
+
+```bash
+go build -o bin/devfolio ./cmd/devfolio
+```
+
+## 📖 User Guide
+
+**New here? Start with the [full User Guide](docs/USER_GUIDE.md)** — install options, every flag, the complete scoring rubric, and a troubleshooting table for common errors.
 
 ## What it scores
 
-Each README is graded out of 100 on:
+Each README is graded out of 100 — this is the differentiator vs. "another static HTML portfolio generator":
 
 | Check | Weight |
 |-------|-------:|
@@ -56,8 +59,6 @@ Each README is graded out of 100 on:
 | License section | 10 |
 | Architecture / how-it-works | 10 |
 | Code samples | 5 |
-
-This is the differentiator vs “another static HTML portfolio generator.”
 
 ## Architecture
 
@@ -94,6 +95,11 @@ go test ./...
 go vet ./...
 go build -o bin/devfolio ./cmd/devfolio
 ```
+
+## See also
+
+- [User Guide](docs/USER_GUIDE.md) — the full walkthrough
+- [Go vs Rust comparison](COMPARISON.md) — benchmarks against the [Rust sibling](../devfolio-cli-rust)
 
 ## License
 
